@@ -9,16 +9,13 @@ import (
 )
 
 type Handler struct {
-	openaiService   services.OpenAIService
 	weaviateService services.WeaviateService
 }
 
 func NewHandler(
-	openaiService *services.OpenAIService,
 	weaviateService *services.WeaviateService,
 ) *Handler {
 	return &Handler{
-		openaiService:   *openaiService,
 		weaviateService: *weaviateService,
 	}
 }

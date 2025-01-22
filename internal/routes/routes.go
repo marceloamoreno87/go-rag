@@ -27,9 +27,8 @@ func SetupRoutes() http.Handler {
 		fmt.Println(err)
 	}
 
-	openaiService := services.NewOpenAIService("your-api-key")
 	weaviateService := services.NewWeaviateService(client)
-	h := handlers.NewHandler(openaiService, weaviateService)
+	h := handlers.NewHandler(weaviateService)
 
 	r.Post("/generate", h.GenerateHandler)
 	r.Post("/add-data", h.AddDataHandler)

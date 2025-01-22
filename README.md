@@ -1,58 +1,48 @@
-# RAG Go Project
+# Projeto de API com Golang, Chi Router, Weaviate, Docker e Air Reload
 
-This project implements a Retrieval-Augmented Generation (RAG) concept using OpenAI and an open-source vector store. It is built with Go and follows REST API principles using the Chi router.
+Este projeto é uma API desenvolvida em Golang que utiliza o Chi Router para roteamento, Weaviate como banco de dados vetorial, Docker para containerização e Air Reload para recarregamento automático durante o desenvolvimento.
 
-## Project Structure
+## Tecnologias Utilizadas
 
-```
-go-rag
-├── cmd
-│   └── main.go          # Entry point of the application
-├── internal
-│   ├── handlers
-│   │   └── handler.go   # HTTP request handlers
-│   ├── routes
-│   │   └── routes.go    # Route definitions
-│   ├── services
-│   │   └── openai.go    # OpenAI API interaction
-│   └── vectorstore
-│       └── vectorstore.go # Vector store implementation
-├── pkg
-│   └── models
-│       └── model.go     # Data models
-├── Dockerfile            # Docker image instructions
-├── docker-compose.yml    # Docker Compose configuration
-├── go.mod                # Module definition
-├── go.sum                # Dependency checksums
-└── README.md             # Project documentation
-```
+- **Golang**: Linguagem de programação utilizada para desenvolver a API.
+- **Chi Router**: Biblioteca de roteamento para Golang.
+- **Weaviate(https://weaviate.io/)**: Banco de dados vetorial utilizado para armazenar e buscar dados.
+- **Docker**: Plataforma de containerização utilizada para empacotar a aplicação.
+- **Docker Compose**: Ferramenta para definir e gerenciar multi-containers Docker.
+- **Air Reload**: Ferramenta para recarregamento automático durante o desenvolvimento.
+- **Cohere(https://cohere.com/)**: Utilizado como IA para gerar a resposta final.
+- **Transformers Inference**: Utiliza o modelo `sentence-transformers-multi-qa-MiniLM-L6-cos-v1` para embeddings.
 
-## Setup Instructions
+## Endpoints
 
-1. **Clone the repository:**
-   ```
-   git clone <repository-url>
-   cd go-rag
+### 1. `/generate`
+
+Endpoint para enviar uma pergunta e obter uma resposta.
+
+- **URL**: `http://localhost:3333/generate`
+- **Método**: `POST`
+- **Payload**:
+  ```json
+  {
+      "query": "what happened in 1953 ?"
+  }
    ```
 
-2. **Build the Docker image:**
-   ```
-   docker build -t go-rag .
-   ```
+### 2. `/add-data`
 
-3. **Run the application using Docker Compose:**
-   ```
+Endpoint para criar dados no banco vetorial.
+
+- **URL**: `http://localhost:3333/add-data`
+- **Método**: `POST`
+
+## Como rodar o projeto
+
+Para rodar o projeto, siga os passos abaixo:
+
+1. **Clone o repositório:**
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+   cd <NOME_DO_DIRETORIO>
    docker-compose up
-   ```
 
-## Usage
 
-Once the application is running, you can interact with the API endpoints defined in the routes. The handlers will process requests related to the RAG concept, utilizing the OpenAI API and the vector store for data retrieval and generation.
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.# go-rag
