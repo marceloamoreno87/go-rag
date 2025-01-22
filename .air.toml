@@ -1,0 +1,27 @@
+# Config file for Air
+[build]
+  # Working directory
+  bin = "bin/main"
+  cmd = "go build -o ./bin/main ./cmd/main.go"
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  exclude_dir = ["assets", "tmp", "vendor"]
+  exclude_file = [".air.toml"]
+  follow_symlink = true
+
+[log]
+  level = "debug"
+  color = true
+  timestamp = true
+
+[serve]
+  cmd = "./bin/main"
+  delay = 1000
+  grace = 5000
+  kill_signal = "SIGTERM"
+  watch_dir = ["."]
+  watch_file = []
+  watch_exclude_dir = ["assets", "tmp", "vendor"]
+  watch_exclude_file = [".air.toml"]
+  follow_symlink = true
+  shell = "sh"
+  shell_args = ["-c"]
